@@ -1,4 +1,4 @@
-from collections import List
+from typing import List
 class Solution:
     def countMentions(self, numberOfUsers: int, events: List[List[str]]) -> List[int]:
         # The result is corresponding to whenever event message is called, check if at that time

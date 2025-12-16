@@ -1,4 +1,4 @@
-from collections import List
+from typing import List
 from collections import defaultdict
 class Solution:
     def countCoveredBuildings(self, n: int, buildings: List[List[int]]) -> int:

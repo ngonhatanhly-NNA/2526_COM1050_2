@@ -1,4 +1,4 @@
-from collections import List
+from typing import List
 import math as m
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:

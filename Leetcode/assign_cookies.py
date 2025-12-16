@@ -1,4 +1,4 @@
-from collections import List
+from typing import List
 class Solution:
     def findContentChildren(self, g: List[int], s: List[int]) -> int:
         # Using greedy algorithm, sorting to find the minimum
