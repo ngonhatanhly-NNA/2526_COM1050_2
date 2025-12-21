@@ -47,6 +47,32 @@ class Solution:
                     lps[i] = 0
                     i += 1
         return lps
-import sys        
-txt, pat = sys.stdin.read().split()
-print(Solution().search(pat, txt))
+
+class Solution1:
+    def KMPAlgorithm(self, pat):
+        n = len(pat)
+        lps = [0] * n
+
+        i = 1
+        patLen = 0
+        while i < n:
+            if pat[i] == pat[patLen]:
+                patLen += 1
+                lps[i] = patLen
+                i += 1
+            else:
+                if patLen != 0:
+                    patLen = lps[patLen - 1]
+                else:
+                    lps[i] = 0
+                    i += 1
+        return pat
+
+    def minChar(self, s):
+        n = len(s)
+        rev = s[::-1]
+
+        s = s + '$' + rev
+        lps = self.KMPAlgorithm(s)
+
+        return n - lps[-1] 

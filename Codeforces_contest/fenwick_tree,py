@@ -1,0 +1,49 @@
+# Fenwich Tree (binary index tree)
+
+class FenwickTree:
+    def __init__(self, n):
+        self.tree = [0] * (n + 1)
+        
+    def update(self, i, delta):
+        while i < len(self.tree):
+            self.tree[i] += delta
+            i += i & (-i) # Store in bin form
+            
+    def query(self, i):
+        s = 0
+        while i > 0:
+            s += self.tree[i]
+            i -= i & (-i) # Receive
+        return s
+
+class Solution:
+    def minInversionCount(self, nums: list[int], k: int) -> int:
+        n = len(nums)
+        # 1. Coordinate Compression for Fenwick Tree indices
+        sorted_unique = sorted(list(set(nums)))
+        rank = {val: i + 1 for i, val in enumerate(sorted_unique)}
+        max_rank = len(sorted_unique)
+        
+        ft = FenwickTree(max_rank)
+        current_inv = 0
+        min_inv = float('inf')
+        
+        for i in range(n):
+            # Element entering the window
+            curr_rank = rank[nums[i]]
+            # Elements in window > current element are inversions
+            current_inv += (ft.query(max_rank) - ft.query(curr_rank))
+            ft.update(curr_rank, 1)
+            
+            # Element leaving the window
+            if i >= k:
+                prev_rank = rank[nums[i - k]]
+                # Elements in window < leaving element were inversions
+                current_inv -= ft.query(prev_rank - 1)
+                ft.update(prev_rank, -1)
+            
+            # Once window is full, track the minimum
+            if i >= k - 1:
+                min_inv = min(min_inv, current_inv)
+                
+        return min_inv

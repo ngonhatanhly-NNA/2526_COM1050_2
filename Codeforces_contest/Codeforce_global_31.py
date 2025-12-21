@@ -2,7 +2,6 @@ import sys
 import math
 
 def A():
-    # Use fast I/O
     input_data = sys.stdin.read().split()
     if not input_data:
         return
@@ -19,7 +18,6 @@ def A():
         a = int(next(it))
         b = int(next(it))
         
-        # 1. Find the greatest common divisor
         g = math.gcd(b, l)
         
         # 2. Mathematical shortcut:
@@ -54,6 +52,7 @@ def B():
                 s = option2
         print(s)
 import sys
+"""chua lam dc"""
 def C():
     file = sys.stdin.read().split()
     if not file:

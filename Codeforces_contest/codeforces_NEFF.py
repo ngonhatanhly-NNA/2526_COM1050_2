@@ -47,49 +47,5 @@ def A():
 
     print(*(results))
 
-import sys
-from collections import defaultdict
-def B():
-    # Use a generator to yield tokens one by one without loading everything at once
-    def get_input():
-        for line in sys.stdin:
-            for word in line.split():
-                yield word # Input it into lazy iterator, remove till call
-    
-    tokens = get_input()
-    
-    line = next(tokens, None)
-    if line is None:
-        return
-    t = int(line)
-
-    results = []
-    for _ in range(t):
-        try:
-            n = int(next(tokens))
-            m = int(next(tokens))
-           
-            # Find strength and max
-            Alice, Bob = defaultdict(list), defaultdict(list)
-            
-            for i in range(n):
-                a = int(next(tokens))
-                Alice[a].append(i)
-            for i in range(m):
-                b = int(next(tokens))
-                Bob[b].append(i)
-
-            while Alice and Bob:
-                a_max = max(Alice)
-
-                
-                
-                
-        except StopIteration:
-            break
-
-    # Fast output
-    sys.stdout.write("\n".join(results) + "\n")
-
 if __name__ == "__main__":
-    B()
+    pass

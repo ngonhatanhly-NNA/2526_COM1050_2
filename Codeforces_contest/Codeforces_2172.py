@@ -31,7 +31,8 @@ import math
 
 # Thiết lập I/O nhanh hơn cho các bài toán competitive programming
 # Bằng cách sử dụng sys.stdin.readline
-def B_final_fix():
+"""Khong biet lam T^T"""
+def B_final_fix(): # K bieets lamf T^T 
     # Đọc dòng tham số đầu tiên
     try:
         # Sử dụng sys.stdin.readline() thay vì input() để đọc nhanh hơn
